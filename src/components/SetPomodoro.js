@@ -1,29 +1,50 @@
 import React, { useContext, useState } from "react";
-import { SettingContext } from "../context/SettingsContext";
+import styled, { keyframes } from "styled-components";
+import { SettingsContext } from "../context/SettingsContext";
 import Button from "./Button";
 
+const showAnimate = keyframes`
+    0% {
+      opacity: 0;
+      
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-150px);
+    }
+  `;
+
+const Div = styled.div`
+  opacity: 0;
+  animation: ${showAnimate} 1s infinite;
+  animation-iteration-count: 1;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+`;
+
 const SetPomodoro = () => {
-  const { updateExecute } = useContext(SettingContext);
+  const { updateExecute } = useContext(SettingsContext);
   const [newTimer, setNewTimer] = useState({
     //default value
-    work: 0.3, //0.3 minutes
-    break: 0.2,
+    work: 0, //0 second
+    break: 0,
     active: "work",
   });
 
   const handleChange = (input) => {
     const { name, value } = input.target;
+    let valueNanToZero = value || 0;
     switch (name) {
       case "work":
         setNewTimer({
           ...newTimer,
-          work: parseInt(value),
+          work: parseInt(valueNanToZero),
         });
         break;
-      case "break":
+      case "rest":
         setNewTimer({
           ...newTimer,
-          break: parseInt(value),
+          break: parseInt(valueNanToZero),
         });
         break;
 
@@ -34,27 +55,40 @@ const SetPomodoro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateExecute(newTimer);
+    // console.log(newTimer);
   };
   return (
-    <div className="form-container">
-      <form noValidate>
+    <Div className="form-container">
+      <form noValidate onSubmit={handleSubmit}>
         <div className="input-wrapper">
-          <input
-            className="input"
-            name="work"
-            onChange={handleChange}
-            value={newTimer.work}
-          />
-          <input
-            className="input"
-            name="break"
-            onChange={handleChange}
-            value={newTimer.break}
-          />
+          <label htmlFor="work">
+            집중시간
+            <input
+              className="input"
+              name="work"
+              onChange={handleChange}
+              value={newTimer.work}
+              id="work"
+            />
+            분
+          </label>
+          <br />
+          <br />
+          <lable htmlFor="rest">
+            휴식시간
+            <input
+              className="input"
+              name="rest"
+              onChange={handleChange}
+              value={newTimer.break}
+              id="rest"
+            />
+            분
+          </lable>
         </div>
         <Button title="Set Timer" _callback={handleSubmit} />
       </form>
-    </div>
+    </Div>
   );
 };
 
