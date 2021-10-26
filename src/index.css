@@ -83,11 +83,11 @@ button {
 
 .time-wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
   grid-gap: 12px;
-  margin-bottom: -25%;
-  margin-top: -25%;
+  margin-bottom: -12%;
+  margin-top: -12%;
 }
 
 .time-spot {
