@@ -27,7 +27,7 @@ const SetPomodoro = () => {
   const [newTimer, setNewTimer] = useState({
     //default value
     work: 0, //0 second
-    break: 0,
+    rest: 0,
     active: "work",
   });
 
@@ -44,7 +44,7 @@ const SetPomodoro = () => {
       case "rest":
         setNewTimer({
           ...newTimer,
-          break: parseInt(valueNanToZero),
+          rest: parseInt(valueNanToZero),
         });
         break;
 
@@ -52,10 +52,10 @@ const SetPomodoro = () => {
         break;
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     updateExecute(newTimer);
-    // console.log(newTimer);
   };
   return (
     <Div className="form-container">
@@ -80,7 +80,7 @@ const SetPomodoro = () => {
               className="input"
               name="rest"
               onChange={handleChange}
-              value={newTimer.break}
+              value={newTimer.rest}
               id="rest"
             />
             분

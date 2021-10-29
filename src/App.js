@@ -45,6 +45,7 @@ const App = () => {
     startTimer,
     updateExecute,
     pauseTimer,
+    key,
   } = useContext(SettingsContext);
 
   useEffect(() => {
@@ -69,9 +70,7 @@ const App = () => {
               activeClass={
                 executing.active === "rest" ? "active-label" : undefined
               }
-              _callback={() => {
-                setCurrentTimer("rest");
-              }}
+              _callback={() => setCurrentTimer("rest")}
             />
           </div>
           <Button title="Settings" _callback={SettingBtn} />
@@ -87,7 +86,7 @@ const App = () => {
                 <span></span>
               </div>
               <CountdownAnimation
-                key={pomodoro}
+                key={key}
                 timer={pomodoro}
                 animate={startAnimate}
               >
