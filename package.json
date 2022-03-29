@@ -17,7 +17,8 @@
     "styled-components": "^5.3.1",
     "url-parse": "^1.5.10",
     "web-vitals": "^1.0.1",
-    "glob-parent": ">=5.1.2"
+    "glob-parent": ">=5.1.2",
+    "immer": ">=9.0.6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -47,6 +48,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
-    "glob-parent": ">=5.1.2"
+    "glob-parent": ">=5.1.2",
+    "immer": ">=9.0.6"
   }
 }
