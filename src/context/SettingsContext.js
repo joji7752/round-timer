@@ -5,7 +5,7 @@ export const SettingsContext = createContext();
 
 function SettingsContextProvider(props) {
   const [pomodoro, setPomodoro] = useState(0);
-  const [key, setKey] = useState(0);
+  const [keyState, setKeyState] = useState(0);
   const [executing, setExecuting] = useState({});
   const [startAnimate, setStartAnimate] = useState(false);
 
@@ -20,12 +20,12 @@ function SettingsContextProvider(props) {
   // start animation
   function startTimer() {
     setStartAnimate(true);
-    console.log("key222222222::::", key);
+    console.log("keyState222222222::::", keyState);
   }
   // pause animation fn
   function pauseTimer() {
     setStartAnimate(false);
-    console.log("key111111111::::", key);
+    console.log("keyState111111111::::", keyState);
   }
 
   const children = ({ remainingTime }) => {
@@ -53,12 +53,11 @@ function SettingsContextProvider(props) {
   const setTimerTime = (evaluate) => {
     switch (evaluate.active) {
       case "work":
-        setKey(0);
+        setKeyState(0);
         setPomodoro(evaluate.work);
-
         break;
       case "rest":
-        setKey(1);
+        setKeyState(1);
         setPomodoro(evaluate.rest);
         break;
       default:
@@ -84,7 +83,7 @@ function SettingsContextProvider(props) {
         SettingBtn,
         setCurrentTimer,
         stopAnimate,
-        key,
+        keyState,
       }}
     >
       {props.children}
