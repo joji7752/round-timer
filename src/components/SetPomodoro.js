@@ -74,7 +74,7 @@ const SetPomodoro = () => {
           </label>
           <br />
           <br />
-          <lable htmlFor="rest">
+          <label htmlFor="rest">
             휴식시간
             <input
               className="input"
@@ -84,7 +84,7 @@ const SetPomodoro = () => {
               id="rest"
             />
             분
-          </lable>
+          </label>
         </div>
         <Button title="Set Timer" _callback={handleSubmit} />
       </form>
