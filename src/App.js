@@ -1,8 +1,9 @@
+import * as React from "react";
 import { useContext, useEffect } from "react";
 import SetPomodoro from "./components/SetPomodoro";
 import logo from "./logo.svg";
 import styled, { keyframes } from "styled-components";
-import { SettingsContext } from "./context/SettingsContext";
+import { SettingsContexWt } from "./context/SettingsContext";
 import Button from "./components/Button";
 import CountdownAnimation from "./components/CountdownAnimation";
 
